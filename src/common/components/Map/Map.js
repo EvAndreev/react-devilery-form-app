@@ -39,9 +39,18 @@ export class MapComponent extends React.Component {
         let detected = new MobileDetect(window.navigator.userAgent);
         if (detected.mobile()) {
             this.ref.behaviors.disable('drag');
+            console.log('sucsses');
         }
         else {
             this.ref.behaviors.enable('drag');
+        }
+    }
+
+    dragDisable = () => {
+        if (!this.ref) return;
+        if (this.ref && window.screen.width < 576) {
+            this.ref.behaviors.disable('drag');
+            console.log('drag-off');
         }
     }
 
@@ -66,6 +75,7 @@ export class MapComponent extends React.Component {
                         state={this.state} 
                         style={{width: '100%', height: '580px'}} 
                         instanceRef={this.setRef}
+                        onLoad={this.dragDisable}
                     >
                         {adresses.map(getMarker).map(placemark => <Placemark 
                             geometry={placemark.coordinates} 
