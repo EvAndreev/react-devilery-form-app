@@ -2,7 +2,7 @@ export const getMarker = (adress) => (
     {
         options: {
             iconLayout: 'default#image',
-            iconImageHref: "/assets/icon/pin.svg",
+            iconImageHref: "src/common/media/pin.svg",
             iconImageSize: [33, 40]
         },
         properties: {
